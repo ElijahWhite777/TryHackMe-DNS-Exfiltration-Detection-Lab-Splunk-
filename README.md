@@ -36,7 +36,6 @@ Initial access to host computer Michael Ascot was through the phishing email her
 
 <img width="1264" height="657" alt="attacker uses net to search local group finds michale and uses powerview" src="https://github.com/user-attachments/assets/f77f8ac6-eeaa-4fad-978d-9cf3f783e47a" />
 
-<img width="1271" height="667" alt="usues sciptblock execution bypass to disable restrictions" src="https://github.com/user-attachments/assets/30b25128-76d1-4252-a5be-760cbe13e79d" />
 
 
  <h2> Discovery / Recon
@@ -45,6 +44,8 @@ Initial access to host computer Michael Ascot was through the phishing email her
    Powerview runs Reflection checks to validate its enviornment and user permissions.
   
 <img width="1920" height="1008" alt="powerview to enumerate DNSHostnames computerobjects LDAP put in file exfiltrateion " src="https://github.com/user-attachments/assets/4c4b9b6e-fad8-4aa6-a29b-d546eafe2043" />
+
+<img width="1271" height="667" alt="usues sciptblock execution bypass to disable restrictions" src="https://github.com/user-attachments/assets/30b25128-76d1-4252-a5be-760cbe13e79d" />
 
 Attacker begins to use Powerview to enumerate DNSHostname, LDP to qurey within the active directory(AD) to steal data
 Also attacker finds sensitive Directory using net.exe under michael.ascot \\FILESRV-01\SSF-FinancialRecords
